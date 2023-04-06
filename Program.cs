@@ -1,12 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Project_7
 {
     internal class Program
-    {    
-        //PART 1
+    {
         static void Main(string[] args)
         {
+            string choice = "";
+            bool running = true;
+
+            while (running)
+            {
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine("Menu");
+                Console.WriteLine("1. List of integers");
+                Console.WriteLine("2. List of strings");
+                Console.WriteLine();
+                Console.WriteLine("Choose what program to run (1-2): ");
+                choice = Console.ReadLine().ToLower().Trim();
+
+                switch (choice)
+                {
+
+                    case "1":
+                        ListOfIntegers();
+                        break;
+
+                    case "2":
+                        ListOfStrings();
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Invalid choice. Choose from (1-2)");
+                        break;
+                }
+            }
+        }
+        private static void ListOfIntegers()
+        {
+            //Part 1
             List<int> numbers = new List<int>();
             Random rand = new Random();
 
@@ -17,13 +52,13 @@ namespace Project_7
 
             string choice = "";
 
-                Console.ResetColor();
-                Console.WriteLine();
-                Console.WriteLine("Here is your list of numbers:");
-                Thread.Sleep(1000);
-                Console.WriteLine($"[{string.Join(", ", numbers)}]");
-                Thread.Sleep(500);
-                
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("Here is your list of numbers:");
+            Thread.Sleep(1000);
+            Console.WriteLine($"[{string.Join(", ", numbers)}]");
+            Thread.Sleep(500);
+
             while (true)
             {
                 Console.ResetColor();
@@ -140,7 +175,7 @@ namespace Project_7
                         break;
 
                     case "9":
-                        var groups = numbers.GroupBy(x => x).Select(g => new {Value = g.Key, Count = g.Count()});
+                        var groups = numbers.GroupBy(x => x).Select(g => new { Value = g.Key, Count = g.Count() });
                         int maxCount = groups.Max(g => g.Count);
                         var mostFrequent = groups.Where(g => g.Count == maxCount).Select(g => g.Value);
                         //internet solution
@@ -166,5 +201,12 @@ namespace Project_7
                 }
             }
         }
+        private static void ListOfStrings()
+        {
+
+
+        }
     }
 }
+
+            
