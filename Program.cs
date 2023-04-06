@@ -42,6 +42,8 @@ namespace Project_7
         private static void ListOfIntegers()
         {
             //Part 1
+            Console.WriteLine("List of integers program");
+
             List<int> numbers = new List<int>();
             Random rand = new Random();
 
