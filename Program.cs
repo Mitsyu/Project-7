@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Project_7
+﻿namespace Project_7
 {
     internal class Program
     {
