@@ -238,22 +238,10 @@
                 {
 
                     case "1":
-                        Console.Write("Please enter the index of the vegetable you wish to remove: ");
-                        string indexRemove = Console.ReadLine().ToUpper();
-                        if (vegetables.Remove(indexRemove))
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine($"The vegetable, {indexRemove} has been removed.");
-                        }
-                        else
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine("Vegetable not found.");
-                        }
-                        break;
+                        
 
                     case "2":
-                        Console.Write("Please enter the name of the vegetable you wish to remove: ");
+                        Console.Write("Please enter the value of the vegetable you wish to remove: ");
                         string valueToRemove = Console.ReadLine().ToUpper();
                         if (string.IsNullOrWhiteSpace(valueToRemove))
                         {
@@ -271,7 +259,7 @@
                         break;
 
                     case "3":
-                        Console.Write("Please enter the name of the vegetable you wish to search for: ");
+                        Console.Write("Please enter the index of the vegetable you wish to search for: ");
                         string vegetableSearch = Console.ReadLine().ToUpper();
                         int index = vegetables.IndexOf(vegetableSearch);
 
@@ -294,7 +282,7 @@
                         if (vegetables.Contains(addVegetable))
                         {
                             Console.WriteLine();
-                            Console.WriteLine($"{addVegetable} is already in list.");
+                            Console.WriteLine($"{addVegetable} is already in the list.");
                         }
                         else
                         {
@@ -335,7 +323,7 @@
         {
             Console.ResetColor();
             Console.WriteLine();
-            Console.WriteLine("Vegetables");
+            Console.WriteLine("Vegetables: ");
             for (int i = 0; i < vegetables.Count; i++)
             {
                 Console.WriteLine($"{i + 0} - {vegetables[i]}");
