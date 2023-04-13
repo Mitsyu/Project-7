@@ -177,7 +177,7 @@
                         var groups = numbers.GroupBy(x => x).Select(g => new { Value = g.Key, Count = g.Count() });
                         int maxCount = groups.Max(g => g.Count);
                         var mostFrequent = groups.Where(g => g.Count == maxCount).Select(g => g.Value);
-                        //internet solution
+                        
                         Console.Write("The most frequently occurring value(s) is: ");
                         foreach (var value in mostFrequent)
                         {
@@ -206,7 +206,6 @@
             Console.WriteLine();
             Console.WriteLine("- List of strings program -");
             Console.WriteLine();
-
             string choice = "";
             List<string> vegetables = new List<string> { "CARROT", "BEET", "CELERY", "RADISH", "CABBAGE" };
             Console.WriteLine("---------------------------------------------------------");
@@ -231,7 +230,6 @@
                 Console.WriteLine();
                 Console.Write("Option: ");
                 choice = Console.ReadLine().ToLower().Trim();
-                //int option = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
                 Console.WriteLine("---------------------------------------------------------");
                 Console.WriteLine();
@@ -241,24 +239,30 @@
 
                     case "1":
                         Console.Write("Please enter the index of the vegetable you wish to remove: ");
-                        int indexRemove = Convert.ToInt32(Console.ReadLine());
-                        if (indexRemove >= 0 && indexRemove < vegetables.Count)
+                        string indexRemove = Console.ReadLine().ToUpper();
+                        if (vegetables.Remove(indexRemove))
                         {
-                            vegetables.RemoveAt(indexRemove);
-                            Console.WriteLine("Vegetable removed.");
+                            Console.WriteLine();
+                            Console.WriteLine($"The vegetable, {indexRemove} has been removed.");
                         }
                         else
                         {
-                            Console.WriteLine("Invalid index.");
+                            Console.WriteLine();
+                            Console.WriteLine("Vegetable not found.");
                         }
                         break;
 
                     case "2":
                         Console.Write("Please enter the name of the vegetable you wish to remove: ");
-                        string removeVegetable = Console.ReadLine().ToUpper();
-                        if (vegetables.Remove(removeVegetable))
+                        string valueToRemove = Console.ReadLine().ToUpper();
+                        if (string.IsNullOrWhiteSpace(valueToRemove))
                         {
-                            Console.WriteLine($"The vegetable, {removeVegetable} has been removed.");
+                            Console.WriteLine("Invalid input. Please enter a non-empty string.");
+                            continue;
+                        }
+                        if (vegetables.Remove(valueToRemove))
+                        {
+                            Console.WriteLine("Vegetable removed.");
                         }
                         else
                         {
@@ -270,16 +274,17 @@
                         Console.Write("Please enter the name of the vegetable you wish to search for: ");
                         string vegetableSearch = Console.ReadLine().ToUpper();
                         int index = vegetables.IndexOf(vegetableSearch);
-                   
+
                         if (index >= 0)
                         {
                             Console.WriteLine();
                             Console.WriteLine($"Vegetable found at index {index}.");
                         }
+
                         else
                         {
                             Console.WriteLine();
-                            Console.WriteLine("Vegetable not found.");
+                            Console.WriteLine($"Vegetable {vegetableSearch} not found.");
                         }
                         break;
 
@@ -288,6 +293,7 @@
                         string addVegetable = Console.ReadLine().ToUpper();
                         if (vegetables.Contains(addVegetable))
                         {
+                            Console.WriteLine();
                             Console.WriteLine($"{addVegetable} is already in list.");
                         }
                         else
@@ -295,7 +301,6 @@
                             vegetables.Add(addVegetable);
                             Console.WriteLine();
                             Console.WriteLine($"The vegetable {addVegetable} has been added.");
-
                         }
                         break;
 
@@ -333,7 +338,7 @@
             Console.WriteLine("Vegetables");
             for (int i = 0; i < vegetables.Count; i++)
             {
-                Console.WriteLine($"{i + 1} - {vegetables[i]}");
+                Console.WriteLine($"{i + 0} - {vegetables[i]}");
             }
         }
     }
