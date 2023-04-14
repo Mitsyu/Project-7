@@ -245,6 +245,7 @@
                         int removeIndex;
                         if (!int.TryParse(Console.ReadLine(), out removeIndex))
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid index.");
                             continue;
                         }
@@ -256,6 +257,7 @@
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid index.");
                             
                         }
@@ -272,6 +274,7 @@
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Vegetable not found.");
                             Console.WriteLine();
                         }
@@ -292,6 +295,7 @@
                         else
                         {
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"Vegetable {vegetableSearch} not found.");
                             Console.WriteLine();
                         }
@@ -303,6 +307,7 @@
                         if (vegetables.Contains(addVegetable))
                         {
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine($"{addVegetable} is already in the list.");
                             Console.WriteLine();
                         }
@@ -310,6 +315,7 @@
                         {
                             vegetables.Add(addVegetable);
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"{addVegetable} has been added.");
                             Console.WriteLine();
                         }
