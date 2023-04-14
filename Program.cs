@@ -39,6 +39,8 @@
         private static void ListOfIntegers()
         {
             //Part 1
+            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine();
             Console.WriteLine("- List of integers program -");
 
             List<int> numbers = new List<int>();
@@ -238,28 +240,45 @@
                 {
 
                     case "1":
-                        
-
-                    case "2":
-                        Console.Write("Please enter the value of the vegetable you wish to remove: ");
-                        string valueToRemove = Console.ReadLine().ToUpper();
-                        if (string.IsNullOrWhiteSpace(valueToRemove))
+                        Console.Write("Please enter the index of the vegetable you wish to remove: ");
+                        Console.WriteLine();
+                        int removeIndex;
+                        if (!int.TryParse(Console.ReadLine(), out removeIndex))
                         {
-                            Console.WriteLine("Invalid input. Please enter a non-empty string.");
+                            Console.WriteLine("Invalid index.");
                             continue;
                         }
-                        if (vegetables.Remove(valueToRemove))
+                        if (removeIndex >= 0 && removeIndex < vegetables.Count)
+                        {
+                            vegetables.RemoveAt(removeIndex);
+                            Console.WriteLine("Vegetable removed.");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid index.");
+                            
+                        }
+                        break;
+                   
+                    case "2":
+                        Console.Write("Please enter the name of the vegetable you wish to remove: ");
+                        Console.WriteLine();
+                        string removeValue = Console.ReadLine().ToUpper();
+                        if (vegetables.Remove(removeValue))
                         {
                             Console.WriteLine("Vegetable removed.");
+                            Console.WriteLine();
                         }
                         else
                         {
                             Console.WriteLine("Vegetable not found.");
+                            Console.WriteLine();
                         }
                         break;
 
                     case "3":
-                        Console.Write("Please enter the index of the vegetable you wish to search for: ");
+                        Console.Write("Please enter the name of the vegetable you wish to search for: ");
                         string vegetableSearch = Console.ReadLine().ToUpper();
                         int index = vegetables.IndexOf(vegetableSearch);
 
@@ -267,12 +286,14 @@
                         {
                             Console.WriteLine();
                             Console.WriteLine($"Vegetable found at index {index}.");
+                            Console.WriteLine();
                         }
 
                         else
                         {
                             Console.WriteLine();
                             Console.WriteLine($"Vegetable {vegetableSearch} not found.");
+                            Console.WriteLine();
                         }
                         break;
 
@@ -283,12 +304,14 @@
                         {
                             Console.WriteLine();
                             Console.WriteLine($"{addVegetable} is already in the list.");
+                            Console.WriteLine();
                         }
                         else
                         {
                             vegetables.Add(addVegetable);
                             Console.WriteLine();
-                            Console.WriteLine($"The vegetable {addVegetable} has been added.");
+                            Console.WriteLine($"{addVegetable} has been added.");
+                            Console.WriteLine();
                         }
                         break;
 
@@ -322,8 +345,8 @@
         static void PrintVegetables(List<string> vegetables)
         {
             Console.ResetColor();
-            Console.WriteLine();
             Console.WriteLine("Vegetables: ");
+            Console.WriteLine();
             for (int i = 0; i < vegetables.Count; i++)
             {
                 Console.WriteLine($"{i + 0} - {vegetables[i]}");
